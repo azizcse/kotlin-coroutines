@@ -55,7 +55,7 @@ class SampleListFragment : ListFragment() {
     }
 
     private fun showFragment(fragment: Fragment, tag: String) {
-        activity.supportFragmentManager.beginTransaction()
+        activity!!.supportFragmentManager.beginTransaction()
                 .add(R.id.fragmentContainer, fragment, tag)
                 .addToBackStack(tag)
                 .commit()

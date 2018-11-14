@@ -7,12 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.dmytrodanylyk.R
 import kotlinx.android.synthetic.main.fragment_button.*
-import kotlinx.coroutines.experimental.*
-import kotlinx.coroutines.experimental.android.Main
+import kotlinx.coroutines.*
 import java.util.*
 import java.util.concurrent.TimeUnit
-import kotlinx.coroutines.experimental.CoroutineDispatcher
-import kotlin.coroutines.experimental.CoroutineContext
+import kotlin.coroutines.CoroutineContext
 
 abstract class ScopedFragment : Fragment(), CoroutineScope {
 
@@ -73,7 +71,7 @@ class AndroidScopedFragment : ScopedFragment() {
     class DataProvider(private val dispatcher: CoroutineDispatcher = Dispatchers.IO) {
 
         suspend fun loadData(): String = withContext(dispatcher) {
-            delay(2, TimeUnit.SECONDS) // imitate long running operation
+            delay(2000) // imitate long running operation
             "Data is available: ${Random().nextInt()}"
         }
     }

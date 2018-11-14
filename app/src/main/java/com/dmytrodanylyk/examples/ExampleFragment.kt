@@ -2,13 +2,14 @@ package com.dmytrodanylyk.examples
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.transition.TransitionManager.go
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.dmytrodanylyk.R
 import kotlinx.android.synthetic.main.fragment_button.*
-import kotlinx.coroutines.experimental.*
+import kotlinx.coroutines.*
 
 
 /*
@@ -45,7 +46,6 @@ class ExampleFragment : Fragment() {
 
     private fun loadData() = runBlocking{
         val job = GlobalScope.launch {
-            delay(1000L)
             Log.e(TAG,"Inside coroutin!")
         }
         Log.e(TAG,"Hello,")
@@ -104,4 +104,6 @@ class ExampleFragment : Fragment() {
         job.cancelAndJoin() // cancels the job and waits for its completion
         Log.e(TAG,"main: Now I can quit.")
     }
+
+
 }
